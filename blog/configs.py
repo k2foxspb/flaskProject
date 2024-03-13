@@ -1,7 +1,7 @@
 import os
 
 
-class ProductionConfig(object):
+class BaseConfig(object):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
@@ -9,10 +9,10 @@ class ProductionConfig(object):
     SECRET_KEY = "abcdefg123456"
 
 
-class DevConfig(ProductionConfig):
+class DevConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
 
-class TestingConfig(ProductionConfig):
+class TestingConfig(BaseConfig):
     TESTING = True

@@ -3,6 +3,7 @@ from blog.views.users import users_app
 from blog.views.articles import articles_app
 from blog.models.database import db
 from blog.views.auth import login_manager, auth_app
+from flask_migrate import Migrate
 import os
 
 app = Flask(__name__)
@@ -23,5 +24,7 @@ app.register_blueprint(auth_app, url_prefix="/auth")
 login_manager.init_app(app)
 
 
-cfg_name = os.environ.get("CONFIG_NAME") or "ProductionConfig"
+cfg_name = os.environ.get("CONFIG_NAME") or "BaseConfig"
 app.config.from_object(f"blog.configs.{cfg_name}")
+
+migrate = Migrate(app, db, compare_type=True)
