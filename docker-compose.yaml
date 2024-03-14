@@ -3,7 +3,7 @@ version: '3.5'
 services:
   flaskproject:
     build:
-      dockerfile: ./Dckerfile
+      dockerfile: ./Dockerfile
       context: .
     environment:
       SQLALCHEMY_DATABASE_URI: postgresql://user:password@pg:5432/blog

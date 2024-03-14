@@ -6,12 +6,20 @@
     <h1>Articles</h1>
     <div>
         <ul>
-            {% for title in articles %}
+            {% for article in articles %}
                 <li>
-                    {{ title }}
+                    <a href="{{ url_for('articles_app.details', article_id=article.id) }}">{{ article.title }}</a>
+                    {% if article.author != None %}
+                        by {{ article.author.user.username }}
+                    {% else %}
+                        by Anon
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
+        <hr>
+        <a href="{{ url_for('articles_app.create') }}">Create new</a>
     </div>
+
 
 {% endblock %}

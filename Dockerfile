@@ -5,4 +5,4 @@ RUN pip install -r requirements.txt
 COPY ./wsgi.py wsgi.py
 COPY blog ./blog
 EXPOSE 5000
-CMD  flask init-db; flask create-users; python wsgi.py;
+CMD python wsgi.py;
