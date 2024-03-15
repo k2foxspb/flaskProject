@@ -6,7 +6,14 @@
     <h1>{{ article.title }}</h1>
     <div>
         <p>{{ article.body }}</p>
-        <div>Published {{ article.dt_created }}</div>
+        {% if article.tags %}
+            <div>Tags:</div>
+            <ul>
+                {% for tag in article.tags %}
+                    <li>{{ tag.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         {% if article.author != None %}
             <div>by {{ article.author.user.username }}</div>
         {% else %}
