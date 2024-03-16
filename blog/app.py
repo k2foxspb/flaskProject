@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+
+from blog.admin import admin
 from blog.views.users import users_app
 from blog.views.articles import articles_app
 from blog.models.database import db
@@ -32,3 +34,5 @@ migrate = Migrate(app, db, compare_type=True)
 flask_bcrypt.init_app(app)
 
 app.register_blueprint(authors_app, url_prefix="/authors")
+
+admin.init_app(app)
