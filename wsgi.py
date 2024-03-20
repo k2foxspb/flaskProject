@@ -3,21 +3,18 @@ import os
 from blog.app import app
 from blog.models.database import db
 
-if __name__ == '__main__':
-    app.run(
-        host='0.0.0.0',
-        debug=True,
-    )
 
-
-@app.cli.command("init-db")
 def init_db():
-    """
-    Run in your terminal:
-    flask init-db
-    """
     db.create_all()
     print("done!")
+
+
+if __name__ == '__main__':
+    app.run(
+
+        debug=False,
+    )
+    init_db()
 
 
 @app.cli.command("create-users")
